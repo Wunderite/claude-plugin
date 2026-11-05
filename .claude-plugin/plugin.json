@@ -16,5 +16,6 @@
     "signature packets"
   ],
   "privacyPolicyUrl": "https://wunderite.com/privacy-policy/",
-  "icon": ".claude-plugin/icon.png"
+  "icon": ".claude-plugin/icon.png",
+  "documentationUrl": "https://docs.wunderite.com"
 }
