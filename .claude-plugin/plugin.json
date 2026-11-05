@@ -1,0 +1,20 @@
+{
+  "name": "wunderite",
+  "version": "0.1.0",
+  "description": "Connect Claude to Wunderite to review agency risk profiles, forms, submissions, signature packets, and assigned tasks.",
+  "author": {
+    "name": "Wunderite",
+    "url": "https://wunderite.com/"
+  },
+  "homepage": "https://wunderite.com/",
+  "keywords": [
+    "insurance",
+    "agency",
+    "risk profiles",
+    "forms",
+    "submissions",
+    "signature packets"
+  ],
+  "privacyPolicyUrl": "https://wunderite.com/privacy-policy/",
+  "icon": ".claude-plugin/icon.png"
+}

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "wunderite": {
+      "type": "http",
+      "url": "https://app.wunderite.com/mcp"
+    }
+  }
+}
