@@ -16,6 +16,10 @@ This plugin contains no code. It adds one remote MCP server, `https://app.wunder
 - `/risk-profile Acme Co` — summarize a risk profile
 - "What forms and submissions can I access?"
 
+## License
+
+Proprietary. Copyright (c) 2026 Wunderite, Inc. All rights reserved. See [LICENSE](LICENSE).
+
 ## Links
 
 - [Privacy](https://wunderite.com/privacy-policy/) · [Terms](https://wunderite.com/terms/) · [Support](https://support.wunderite.com/)
