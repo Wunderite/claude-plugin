@@ -1,6 +1,6 @@
 {
   "name": "wunderite",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Connect Claude to Wunderite to review agency risk profiles, forms, submissions, signature packets, and assigned tasks.",
   "author": {
     "name": "Wunderite",
