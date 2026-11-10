@@ -13,7 +13,7 @@ Use **Risk Profile** for the commercial or personal customer record, **Risk Data
 
 1. Call `whoami` once when identity or agency context is needed, and reuse that context. It returns the connected user, agency/team, `is_service_user`, and `granted_scopes`. Refresh it when troubleshooting changed permissions.
 2. Use the tools actually exposed by the connected Wunderite server. Clients may prefix tool names; the names below are the server names. Read the current tool descriptions and input schemas before constructing calls.
-3. For record-specific work, resolve the intended Risk Profile using `read-risk-profiles`. Reuse a known UUID from the conversation; ask when multiple records match. Stay within the connected agency and the user's record access.
+3. For record-specific work, resolve the intended Risk Profile using `read-risk-profiles`. Reuse a known UUID from the conversation with `operation=lookup`; otherwise search by name with `operation=list` and `filter.search`, for example `{"operation":"list","filter":{"search":"Pied Piper"}}`. Refine with `filter.address` when needed, then inspect likely matches by UUID with `operation=lookup`. Ask when multiple records match. Stay within the connected agency and the user's record access.
 4. Choose a server template for a substantial workflow when the client supports it. For a simple lookup, use the appropriate read tool directly.
 
 `granted_scopes` describes this connection's MCP permissions. It does not override Risk Profile access, team settings, or service-user API access rules. An agency API key identifies a service user, not an individual person.
@@ -104,6 +104,8 @@ Most tools group several actions under an `operation` argument. The directory is
 
 ### Calling details that matter
 
+- Search for a Risk Profile before paging through unfiltered results or offering to create one. `filter.search` matches substrings in name, email, phone, and address and accepts at most 50 characters. `filter.name` narrows by profile name; `filter.address` narrows by street number, street address, and city; `filter.profile_type` accepts `commercial` or `personal`. Filters combine, so an address refinement can exclude a name match; inspect likely name matches before concluding the profile is absent.
+- Risk Profile lists default to 50 results per page; `per_page` accepts 10–100. A miss on the first page does not prove the profile is absent. Follow `next_cursor` for remaining filtered matches. Allowed sorts are `name`, `address`, `created`, and `updated`; prefix with `-` for descending and separate multiple sorts with commas.
 - A single-profile review should pass the resolved `risk_uuid` to tools that support it, particularly `my-tasks`. Review the schedule types the profile actually uses and the request concerns, rather than scanning every type by default.
 - Use schema-defined schedule types. `vehicles` and `drivers` cover both commercial and personal Risk Profiles; personal Real Estate uses `homes`. `subjects_of_insurance` listing requires a building or search filter.
 - Risk Profile, Risk Data, and submission lists use cursor pagination. Tasks and signature-packet lists use `offset`/`per_page` with `meta.has_more`. For other lists, follow their own pagination schema. Label a partial review instead of implying all records were checked.
